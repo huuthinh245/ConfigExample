@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "734096213002",
+    "firebase_url": "https://onesignal-9e7bc.firebaseio.com",
+    "project_id": "onesignal-9e7bc",
+    "storage_bucket": "onesignal-9e7bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734096213002:android:d0968ccd2a06678d",
+        "android_client_info": {
+          "package_name": "com.template"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734096213002-fa030qgen01l6f99l87j0rui5r7udtds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.template",
+            "certificate_hash": "39bbea561624bdc23d6d2d0df062bbbf8e225271"
+          }
+        },
+        {
+          "client_id": "734096213002-pragio07tvdn5vbdfrvp5ijb3q0f4vbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9A1E65pyqwwxvavFRl7Y7dsoCnVZi7AQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734096213002-pragio07tvdn5vbdfrvp5ijb3q0f4vbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
