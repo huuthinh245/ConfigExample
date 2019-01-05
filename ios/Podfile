@@ -38,6 +38,8 @@ target 'Template' do
   pod 'react-native-onesignal',
     :path => "../node_modules/react-native-onesignal/react-native-onesignal.podspec",
     :inhibit_warnings => true
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
 end
 target 'OneSignalNotificationExtension' do
   pod 'OneSignal', '>= 2.9.3', '< 3.0'
