@@ -1,10 +1,11 @@
 {
   "presets": ["module:metro-react-native-babel-preset"],
   "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
     [
       "babel-plugin-root-import",
       {
-        "rootPathPrefix": "~", // Chúng ta cần cho babel biết "~"
+        "rootPathPrefix": "@", // Chúng ta cần cho babel biết "~"
         "rootPathSuffix": "src" // sẽ được convert thành "src"
       }
     ]
@@ -13,10 +14,11 @@
   "env": {
     "production": {
       "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
         [
           "babel-plugin-root-import",
           {
-            "rootPathPrefix": "~",
+            "rootPathPrefix": "@",
             "rootPathSuffix": "src"
           }
         ]

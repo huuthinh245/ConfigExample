@@ -1,17 +1,6 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
-import Login from '~/containers/Login';
-
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-      </View>
-    );
-  }
-}
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import HomeScreen from '@/containers/Home';
+import Login from '@/containers/Login';
 
 const AppNavigator = createSwitchNavigator(
   {
@@ -23,7 +12,7 @@ const AppNavigator = createSwitchNavigator(
     },
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
   },
 );
 

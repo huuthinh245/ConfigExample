@@ -5,8 +5,6 @@ import {
 import { GoogleSignin } from 'react-native-google-signin';
 import OneSignal from 'react-native-onesignal';
 import FBSDK, { LoginManager, AccessToken, LoginButton } from 'react-native-fbsdk';
-import Test from '~/Test';
-import Abc from '~/Routes';
 
 const { GraphRequest, GraphRequestManager } = FBSDK;
 export default class App extends Component {
@@ -84,8 +82,6 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Test />
-        <Abc />
         <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={this._signInGoogle}>
           <Text style={{ margin: 10 }}>login google</Text>
         </TouchableOpacity>
