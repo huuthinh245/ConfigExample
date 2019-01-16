@@ -21,12 +21,15 @@
     "react-native/no-color-literals": 0,
     "react-native/no-inline-styles": 0,
     "no-underscore-dangle": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react-native/sort-styles": "off",
+    "import/prefer-default-export": "off"
   },
   "settings": {
     "import/resolver": {
       "babel-plugin-root-import": {
-        "rootPathPrefix": "@",
+        "rootPathPrefix": "~",
         "rootPathSuffix": "src"
       }
     }

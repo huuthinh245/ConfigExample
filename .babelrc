@@ -5,7 +5,7 @@
     [
       "babel-plugin-root-import",
       {
-        "rootPathPrefix": "@", // Chúng ta cần cho babel biết "~"
+        "rootPathPrefix": "~", // Chúng ta cần cho babel biết "~"
         "rootPathSuffix": "src" // sẽ được convert thành "src"
       }
     ]
@@ -18,7 +18,7 @@
         [
           "babel-plugin-root-import",
           {
-            "rootPathPrefix": "@",
+            "rootPathPrefix": "~",
             "rootPathSuffix": "src"
           }
         ]

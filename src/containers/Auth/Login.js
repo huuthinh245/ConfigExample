@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet, Text, View, TouchableOpacity,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { GoogleSignin } from 'react-native-google-signin';
 import OneSignal from 'react-native-onesignal';
 import FBSDK, { LoginManager, AccessToken, LoginButton } from 'react-native-fbsdk';
+import { loginAction } from './action';
 
 const { GraphRequest, GraphRequestManager } = FBSDK;
-export default class App extends Component {
+class App extends Component {
   componentDidMount() {
     OneSignal.init('1dd5d2bd-e17a-45a3-9d86-ec38d4b725e7');
     OneSignal.setSubscription(true);
@@ -79,11 +82,19 @@ export default class App extends Component {
       });
   };
 
+  _login = () => {
+    // this.props.dispatch(loginAction());
+    this.props.login();
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={this._signInGoogle}>
           <Text style={{ margin: 10 }}>login google</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={this._login}>
+          <Text style={{ margin: 10 }}>login </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ backgroundColor: 'silver', margin: 10 }}
@@ -111,6 +122,16 @@ export default class App extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch(loginAction()),
+});
+App.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+export default connect(
+  null,
+  mapDispatchToProps,
+)(App);
 
 const styles = StyleSheet.create({
   container: {

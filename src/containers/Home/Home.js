@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react/native';
-import netWorkStore from '@/Appstore/HomeStore';
-import dataStore from '@/Appstore/DataStore';
+import dataStore from '~/Appstore/DataStore';
 
 @observer
 class HomeScreen extends React.Component {
@@ -11,7 +11,6 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    console.log(dataStore.data.toJS());
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>{dataStore.data.length}</Text>
@@ -20,17 +19,28 @@ class HomeScreen extends React.Component {
           style={{ backgroundColor: 'blue', margin: 10 }}
           onPress={() => dataStore.delete()}
         >
-          <Text>delete</Text>
+          <Text style={{ fontSize: 20 }}>delete</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ backgroundColor: 'blue', margin: 10 }}
           onPress={() => dataStore.fetchData()}
         >
-          <Text>fetchData</Text>
+          <Text style={{ fontSize: 20 }}>fetch Data</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ backgroundColor: 'blue', margin: 10 }}
+          onPress={() => this.props.navigation.navigate('Login')}
+        >
+          <Text style={{ fontSize: 20 }}>fetch Data</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+HomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default HomeScreen;
