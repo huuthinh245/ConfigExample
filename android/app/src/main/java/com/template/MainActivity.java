@@ -2,6 +2,7 @@ package com.template;
 
 import android.content.Intent;
 
+import com.calendarevents.CalendarEventsPackage;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
@@ -41,5 +42,10 @@ public class MainActivity extends ReactActivity {
 
             ;
         };
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        CalendarEventsPackage.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

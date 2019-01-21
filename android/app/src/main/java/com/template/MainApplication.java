@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.calendarevents.CalendarEventsPackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
@@ -34,7 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNGestureHandlerPackage(),
             new ReactNativeOneSignalPackage(),
               new RNGoogleSigninPackage(),
-              new FBSDKPackage(mCallbackManager)
+              new FBSDKPackage(mCallbackManager),
+              new CalendarEventsPackage()
       );
     }
 

@@ -1,53 +1,100 @@
-import { createAppContainer, createStackNavigator } from 'react-navigation';
-import { Easing, Animated } from 'react-native';
+import {
+  createAppContainer,
+  createStackNavigator,
+  createBottomTabNavigator,
+  StackViewTransitionConfigs,
+} from 'react-navigation';
 import HomeScreen from '~/containers/Home/Home';
 import Login from '~/containers/Auth/Login';
+import Calendar from '~/containers/Calendar/calendar';
+import { transition } from './transitionConfig';
 
-const AppNavigator = createStackNavigator(
+const IOS_MODAL_ROUTES = ['Calendar'];
+
+const dynamicModalTransition = (transitionProps, prevTransitionProps) => {
+  const isModal = IOS_MODAL_ROUTES.some(
+    screenName => screenName === transitionProps.scene.route.routeName
+      || (prevTransitionProps && screenName === prevTransitionProps.scene.route.routeName),
+  );
+  return StackViewTransitionConfigs.defaultTransitionConfig(
+    transitionProps,
+    prevTransitionProps,
+    isModal,
+  );
+};
+
+const HomeStack = createStackNavigator(
   {
     Home: {
       screen: HomeScreen,
     },
+    Calendar: {
+      screen: Calendar,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      title: 'Home',
+      headerTintColor: 'red',
+      headerStyle: {
+        backgroundColor: 'blanchedalmond',
+      },
+    },
+    transitionConfig: dynamicModalTransition,
+  },
+);
+
+const LoginStack = createStackNavigator(
+  {
     Login: {
       screen: Login,
     },
   },
   {
-    initialRouteName: 'Login',
     defaultNavigationOptions: {
-      title: 'dqwdwq',
+      title: 'Login',
       headerTintColor: 'red',
       headerStyle: {
-        backgroundColor: 'yellow',
+        backgroundColor: 'blanchedalmond',
       },
     },
-    headerBackTitleVisible: false,
-    headerTransitionPreset: 'uikit',
-    transitionConfig: () => ({
-      transitionSpec: {
-        duration: 1000,
-        easing: Easing.out(Easing.poly(4)),
-        timing: Animated.timing,
+    transitionConfig: transition,
+  },
+);
+const CalendarStack = createStackNavigator(
+  {
+    Calendar: {
+      screen: Calendar,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      title: 'Calendar',
+      headerTintColor: 'red',
+      headerStyle: {
+        backgroundColor: 'blanchedalmond',
       },
-      screenInterpolator: (sceneProps) => {
-        const { layout, position, scene } = sceneProps;
-        const { index } = scene;
-
-        const height = layout.initWidth;
-        const translateX = position.interpolate({
-          inputRange: [index - 1, index, index + 1],
-          outputRange: [height, 0, 0],
-        });
-
-        const opacity = position.interpolate({
-          inputRange: [index - 1, index - 0.99, index],
-          outputRange: [0, 1, 1],
-        });
-
-        return { opacity, transform: [{ translateX }] };
-      },
-    }),
+    },
+    transitionConfig: transition,
   },
 );
 
-export default createAppContainer(AppNavigator);
+const TabNavigator = createBottomTabNavigator({
+  HomeStack,
+  LoginStack,
+  CalendarStack,
+});
+HomeStack.navigationOptions = ({ navigation }) => {
+  console.log(navigation);
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+    tabBarLabel: 'dsads',
+  };
+};
+
+export default createAppContainer(TabNavigator);

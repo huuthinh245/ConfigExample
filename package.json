@@ -11,6 +11,7 @@
     "mobx-react": "^5.4.3",
     "react": "16.6.3",
     "react-native": "0.57.8",
+    "react-native-calendar-events": "^1.6.4",
     "react-native-fbsdk": "^0.8.0",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-google-signin": "^1.0.2",
