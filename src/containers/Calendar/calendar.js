@@ -11,7 +11,7 @@ export default class CalendarTest extends React.Component {
 
   _saveDate = () => {
     const data = new Date();
-    RNCalendarEvents.saveEvent('SaveEvent', {
+    RNCalendarEvents.saveEvent('test react native', {
       startDate: '2019-01-22T19:26:00.000Z',
       endDate: '2019-01-22T19:26:00.000Z',
       notes: 'Test save',

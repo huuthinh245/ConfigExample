@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import { Provider  } from 'react-redux';
 import { NetInfo } from 'react-native';
 import Root from '~/Route/Root';
-
+import NavigationService from './src/Route/NavigationService';
 import stores from './src/configStore/store';
 
 export default class App extends Component {
@@ -21,9 +21,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <Provider store={stores}>
-        <Root />
-      </Provider>
+      <Provider  store={stores}>
+        <Root 
+          ref ={ navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef)
+          }}
+        />
+      </Provider >
     );
   }
 }

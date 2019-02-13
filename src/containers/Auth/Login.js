@@ -8,10 +8,11 @@ import { GoogleSignin } from 'react-native-google-signin';
 import OneSignal from 'react-native-onesignal';
 import FBSDK, { LoginManager, AccessToken, LoginButton } from 'react-native-fbsdk';
 import { loginAction } from './action';
-
+import NavigationService from '~/Route/NavigationService';
 const { GraphRequest, GraphRequestManager } = FBSDK;
 class App extends Component {
   componentDidMount() {
+    console.log('fewfe');
     OneSignal.init('1dd5d2bd-e17a-45a3-9d86-ec38d4b725e7');
     OneSignal.setSubscription(true);
     OneSignal.inFocusDisplaying(2);
@@ -91,6 +92,9 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={this._signInGoogle}>
+          <Text style={{ margin: 10 }}>login google</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={() => NavigationService.navigate('Home')}>
           <Text style={{ margin: 10 }}>login google</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={this._login}>

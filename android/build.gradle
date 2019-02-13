@@ -9,6 +9,7 @@ buildscript {
         supportLibVersion = "27.1.1"
         googlePlayServicesAuthVersion = "15.0.1"
         googlePlayServicesVersion = "11.8.0"
+        androidMapsUtilsVersion = "0.5+"
         oreoEXPERIMENTAL = "yes"
     }
     repositories {

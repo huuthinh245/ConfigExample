@@ -24,7 +24,8 @@
     "no-undef": "off",
     "import/no-extraneous-dependencies": "off",
     "react-native/sort-styles": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "comma-dangle": "off"
   },
   "settings": {
     "import/resolver": {

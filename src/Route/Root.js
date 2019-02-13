@@ -3,6 +3,7 @@ import {
   createStackNavigator,
   createBottomTabNavigator,
   StackViewTransitionConfigs,
+  createMaterialTopTabNavigator
 } from 'react-navigation';
 import HomeScreen from '~/containers/Home/Home';
 import Login from '~/containers/Auth/Login';
@@ -83,6 +84,9 @@ const TabNavigator = createBottomTabNavigator({
   HomeStack,
   LoginStack,
   CalendarStack,
+}, {
+  swipeEnabled: true,
+  animationEnabled: true,
 });
 HomeStack.navigationOptions = ({ navigation }) => {
   console.log(navigation);
