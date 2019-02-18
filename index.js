@@ -3,6 +3,5 @@ import App from './App';
 import { name as appName } from './app.json';
 import configGoogle from './google';
 import Location from './backgroundLocation';
-
-configGoogle();
+//configGoogle();
 AppRegistry.registerComponent(appName, () => App);

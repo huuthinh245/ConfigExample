@@ -17,6 +17,8 @@ import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.calendarevents.CalendarEventsPackage;
 import com.airbnb.android.react.maps.MapsPackage;
+import com.rt2zz.reactnativecontacts.ReactNativeContacts;
+
 public class MainApplication extends Application implements ReactApplication {
   private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
   protected static CallbackManager getCallbackManager() {
@@ -37,7 +39,8 @@ public class MainApplication extends Application implements ReactApplication {
               new RNGoogleSigninPackage(),
               new FBSDKPackage(mCallbackManager),
               new CalendarEventsPackage(),
-              new MapsPackage()
+              new MapsPackage(),
+              new ReactNativeContacts()
       );
     }
 

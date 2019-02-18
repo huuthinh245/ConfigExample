@@ -7,12 +7,18 @@ import PropTypes from 'prop-types';
 import { GoogleSignin } from 'react-native-google-signin';
 import OneSignal from 'react-native-onesignal';
 import FBSDK, { LoginManager, AccessToken, LoginButton } from 'react-native-fbsdk';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+  listenOrientationChange as loc,
+  removeOrientationListener as rol
+} from 'react-native-responsive-screen';
 import { loginAction } from './action';
 import NavigationService from '~/Route/NavigationService';
 const { GraphRequest, GraphRequestManager } = FBSDK;
 class App extends Component {
   componentDidMount() {
-    console.log('fewfe');
+    loc(this);
     OneSignal.init('1dd5d2bd-e17a-45a3-9d86-ec38d4b725e7');
     OneSignal.setSubscription(true);
     OneSignal.inFocusDisplaying(2);
@@ -20,7 +26,9 @@ class App extends Component {
     OneSignal.addEventListener('opened', this.onOpened);
     OneSignal.addEventListener('ids', this.onIds);
   }
-
+  componentWillUnmount() {
+    rol();
+  }
   onReceived = (notification) => {
     console.log('Notification received: ', notification);
   };
@@ -89,12 +97,35 @@ class App extends Component {
   };
 
   render() {
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+      },
+      responsiveBox: {
+        width: wp('84.5%'),
+        height: hp('17%'),
+        borderWidth: 2,
+        borderColor: 'orange',
+        flexDirection: 'column',
+        justifyContent: 'space-around' 
+      },
+      text: {
+        color: 'chocolate'
+      }
+    });
     return (
       <View style={styles.container}>
+
+        <View style={styles.responsiveBox}>
+          <Text style={styles.text}>This box is always of 84.5% width and 17% heightdqwdqwdqwdqwdwqdwqddwqdwq.</Text>
+        </View>
         <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={this._signInGoogle}>
           <Text style={{ margin: 10 }}>login google</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={() => NavigationService.navigate('Home')}>
+        <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={() => NavigationService.navigate}>
           <Text style={{ margin: 10 }}>login google</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{ backgroundColor: 'silver' }} onPress={this._login}>
@@ -144,4 +175,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  responsiveBox: {
+    width: wp('84.5%'),
+    height: hp('17%'),
+    borderWidth: 2,
+    borderColor: 'orange',
+    flexDirection: 'column',
+    justifyContent: 'space-around' 
+  },
+  text: {
+    color: 'chocolate'
+  }
 });

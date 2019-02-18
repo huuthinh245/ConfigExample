@@ -1,15 +1,20 @@
+import React from 'react';
+import {
+  Text, Dimensions
+} from 'react-native';
 import {
   createAppContainer,
   createStackNavigator,
   createBottomTabNavigator,
   StackViewTransitionConfigs,
-  createMaterialTopTabNavigator
+  createDrawerNavigator
 } from 'react-navigation';
 import HomeScreen from '~/containers/Home/Home';
 import Login from '~/containers/Auth/Login';
 import Calendar from '~/containers/Calendar/calendar';
 import { transition } from './transitionConfig';
 
+const { width } = Dimensions.get('screen');
 const IOS_MODAL_ROUTES = ['Calendar'];
 
 const dynamicModalTransition = (transitionProps, prevTransitionProps) => {
@@ -81,8 +86,8 @@ const CalendarStack = createStackNavigator(
 );
 
 const TabNavigator = createBottomTabNavigator({
-  HomeStack,
   LoginStack,
+  HomeStack,
   CalendarStack,
 }, {
   swipeEnabled: true,
@@ -101,4 +106,21 @@ HomeStack.navigationOptions = ({ navigation }) => {
   };
 };
 
-export default createAppContainer(TabNavigator);
+class DrawMenu extends React.Component {
+  render(){
+    return(
+      <Text>ITEM</Text>
+    )
+  }
+}
+const MyDrawerNavigator = createDrawerNavigator({
+  Tabs: {
+    screen: TabNavigator,
+  }
+}, 
+{
+  contentComponent: DrawMenu,
+  drawerWidth: width/4
+});
+
+export default createAppContainer(MyDrawerNavigator);
